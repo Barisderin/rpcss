@@ -1,0 +1,75 @@
+/* Blue side module
+   ---------------- */
+.lgtBlueRndCnrMod {
+	font-size: 1em;
+	line-height: 1.54em;
+	background: none;
+	margin: 3px 0 1.92em 5px;
+	position: relative;
+	top: 5px;
+}
+.lgtBlueRndCnrMod .hd {
+	background: none;
+}
+.lgtBlueRndCnrMod .hd,
+.lgtBlueRndCnrMod p {
+	margin-bottom: .84em;
+}
+.lgtBlueRndCnrMod h2 {
+	background:  none;
+	font-family:  Arial, Helvetica, "sans serif";
+	font-size: 1em;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.lgtBlueRndCnrMod .bd {
+	position: relative;
+	padding: 6px 7px 2px;
+}
+
+/* x1 = top and left edges; 
+   x1a = top right corner; 
+   x2 = right and bottom edges; 
+   x2a = bottom left corner */
+.lgtBlueRndCnrMod .x1,
+.lgtBlueRndCnrMod .x1 span,
+.lgtBlueRndCnrMod .x2,
+.lgtBlueRndCnrMod .x2 span {
+   display:block;
+   background: url(../../images/blue_box_sprite.png) no-repeat;
+   /* turn off for IE6 or use a GIF */
+   _background:transparent; 
+   width:100%;
+   height:100%;
+   position:absolute;
+}
+.lgtBlueRndCnrMod .x1{
+   background-position:0 0;
+   /*z-index:-2;*/
+   top:-5px; /* set to the size of the glow */
+   left:-5px;
+   bottom:0;
+   /* set glow to the edges of 'mod' */
+   padding:0 0 5px 0; 
+}
+.lgtBlueRndCnrMod .x1 span {
+   height:5px;
+   width:5px;
+   background-position:100% 0;
+   right:-5px;
+   top:0;
+}
+.lgtBlueRndCnrMod .x2 {
+   background-position:100% 100%;
+   /*z-index:-1;*/
+   bottom:-5px;
+   right:0;
+   padding:5px 0 0 4px;
+}
+.lgtBlueRndCnrMod .x2 span {
+   height:5px;
+   width:5px;
+   background-position:0 100%;
+   left:-1px;
+   bottom:0;
+}

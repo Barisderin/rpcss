@@ -1,0 +1,48 @@
+/* Generic tabview
+   --------------- */
+
+.tabView .tabs ul,
+.tabView ul.tabs {
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid;
+}
+.tabView .tabs ul li,
+.tabView ul.tabs li {
+	float: left;
+	width: auto;
+	list-style: none;
+	display: block;
+	margin: 0 3px -1px 0;
+}
+.tabView .tabs a {
+	border: 1px solid;
+	text-decoration: none;
+	border-bottom: 0px;
+	display: block;
+	padding: .25em .4em;
+}
+.tabView .tabs li.selected {
+	background-color: #fff;
+}
+.tabView .tabs a:focus {
+	outline: 0; /* removes the dotted border around the link when pressed */
+}
+.tabContent {
+	border: 1px solid;
+	border-top: 0;
+	overflow: visible;
+	clear: both;
+	position: relative;
+	clear: both;
+}
+.tabPanel {
+	position: absolute;
+	left: -2000px;
+	padding: .25em .4em;
+}
+.tabView .selected {
+	position: static;
+}

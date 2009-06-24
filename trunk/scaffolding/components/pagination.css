@@ -1,0 +1,46 @@
+/* Generic pagination navigation. Used at least by search results.
+   --------------------------------------------------------------- */	
+.pagination {
+	width: auto;
+	/*margin: 0 0 1.54em 0;*/
+	text-align: center;
+	margin-bottom: 1.54em;
+	white-space: nowrap;
+}
+
+.pagination span,
+.pagination a {
+	display: -moz-inline-box;
+	display: inline-block;
+	padding: 0 7px;
+	border-right: 1px solid #666;
+}
+.pagination .previous-off,
+.pagination .next-off {
+	color: #888888;
+	font-weight: bold;
+}
+.pagination a.next_page,
+.pagination span.next_page,
+.pagination a.prev_page,
+.pagination span.prev_page {
+	font-weight: bold;	
+}
+.pagination a.next_page {
+	border-right: 0;
+}
+.pagination span.current {
+	color: #fff;
+	background-color: #000;
+}
+.pagination a,
+.pagination a:visited {	
+	text-decoration: none;
+}
+.pagination a:hover {
+	text-decoration: none;
+	background-color: #D1DFFD;
+}
+.pagination span.disabled {
+	display: none;
+}
