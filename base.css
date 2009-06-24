@@ -1,0 +1,477 @@
+
+/*****************************************************************************
+= Global resets and element defaults
+******************************************************************************/
+
+/* Reset font size for all elements to a single standard (16 pixels in most browsers).
+   Percent % to avoid IE ems bugs and .1 to fix rounding errors when scaling font size in older Opera versions
+*/
+html * { font-size: 100.01% }
+
+/* Standard 13px font size and 20px line height */
+body {
+	font-size: 81.25%; /* 16px default x 81.25 = 13px */
+	line-height:1.54em; /* approximately 20px at default text size of 13px */
+}
+
+/* Reset monospaced elements to default font size in Gecko browsers */
+textarea, pre, tt, code {
+	font-family:'Andale Mono', 'Lucida Console', monospace;  	
+}
+
+/* Correct font size for Safari. 100% is a bit too large, so make it 99% */
+select, input, textarea {
+	font-size: 99%;
+}
+
+/* Bump up font-size in browsers other than IE to get to 13px equivalent */
+pre, code {
+	font-size: 120%;
+	white-space: pre;
+}
+
+/* General reset, based on Eric Meyer's reset */
+html,body,div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+	background: transparent;
+}
+a img { 
+	border: none;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* Focus is defined only on appropriate elements and sometimes with something different than an outline */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* Tables */
+table {
+	border-collapse: collapse;
+	border-spacing: 0; /* tables still need 'cellspacing="0"' in the markup */
+	margin-bottom: 1.54em; /* give a bottom margin, just like <p> tags, etc. */
+}
+caption, th, td { text-align: left; font-weight: normal; }
+table, td, th { vertical-align: middle; }
+table.full { width: 100%; }
+table.fixed { table-layout:fixed }
+
+/* Start adding some real typographic and color style */
+body {
+	font-family: Georgia,"Times New Roman",Times,serif;
+	color: #2f2f2f; 
+	background-color: #4672AF;
+}
+
+/* Hide any <hr /> elements not in the main and sub content areas */
+hr {
+	position: absolute;
+	left: -3000px;
+}
+#main hr,
+#sub1 hr,
+#sub2 hr,
+#sub3 hr {
+	position: static;
+	color: #fff;
+	background:transparent;
+	margin: 0 0 0.5em 0;
+	padding: 0 0 0.5em 0;
+	border:0;
+	border-bottom: 1px #eee solid;
+}
+
+/* Headings */
+h1,h2,h3,h4 {color:#000;}
+
+
+/* Links */  
+a, a:visited {
+	color: #0F3E83;
+}
+a:visited {
+	/*color: #3F6DAF;*/ /* lighter blue */
+}
+a, .menu a { 
+	text-decoration: none; 
+}
+a:hover, a:active { 
+	color: #000; 
+	background-color: #FFFBEF;
+}
+p a, ul a, ol a, dl a, blockquote a, table a { 
+	text-decoration: underline;
+}
+
+/* Make sure it looks like a quote/citation */
+blockquote  {
+	font-style: italic;
+}
+
+/* Make acronyms and abbreviations a bit distinct */
+acronym, abbr {
+  letter-spacing: .07em;
+  border-bottom: .1em dashed #c00;
+  cursor: help;
+}
+acronym {
+	text-transform: uppercase;
+}
+
+/* keep the 20px vertical rhythm with bottom margins */
+p, ul, ol, dl, blockquote {
+	margin-bottom: 1.54em;
+}
+
+
+
+/*****************************************************************************
+= Global utility styles
+******************************************************************************
+These are generally classes that are used to impart the same style attributes
+in every case and context. Some are also used for development and debugging.
+
+*/
+
+/* Document wrapper. Constrains the width of the centered page. */
+.pageW,.pagePad {
+	margin:0 auto;
+	text-align: left; /* necessary to override the IE5/6 page centering hack used in grids.css */
+	position: relative;
+}
+.pageW,.docWrap {
+		width: 1008px;
+}
+.liquid .pageW {
+	width: 100%;
+	min-width: 1008px;
+}
+.pagePad {
+	width: 976px;
+	padding: 0 16px; /* keep a litte space between edge of pages and the viewport/scrollbars */
+}
+.contentPad {
+	width: 946px;
+	padding: 0 31px;
+}
+
+
+/* Elements needing easy clearing fix. See http://www.positioniseverything.net/easyclearing.html */
+#content,
+.docWrap,
+.bd,
+.mediaBlockLt,
+.mediaBlockRt,
+.mediaBlockLt .text,
+.mediaBlockRt .text,
+.row,
+.line,
+.cols,
+.bar,
+.toolbar,
+.btnBar,
+.hList,
+.blockList
+.clearFix { 
+	display: inline-block; /* add hasLayout in IE7. see http://www.tanfa.co.uk/css/examples/haslayout/tripswitch-demo.asp*/
+}
+#content:after,
+.docWrap:after,
+.bd:after,
+.mediaBlockLt:after,
+.mediaBlockRt:after,
+.mediaBlockLt .text:after,
+.mediaBlockRt .text:after,
+.row:after,
+.line:after,
+.cols:after,
+.bar:after,
+.toolbar:after,
+.btnBar:after,
+.hList:after,
+.blockList:after,
+.clearFix:after {
+  content: '[.]';
+  clear: both;
+  display: block;
+  visibility: hidden;
+  height: 0;
+}
+#content,
+.docWrap,
+.bd,
+.mediaBlockLt,
+.mediaBlockRt,
+.mediaBlockLt .text,
+.mediaBlockRt .text,
+.row,
+.line,
+.cols,
+.bar,
+.toolbar,
+.btnBar,
+.hList,
+.blockList,
+.clearFix { 
+	display: block;
+}
+
+.x1, .x1 span,.x2, .x2 span, .x3, .x3 span, .x4, .x4 span {position: absolute; display: block;}
+/*.x1{z-index:1;} .x2{z-index:2;} .x3{z-index:3;} .x4{z-index:4;} .hd,.bd,.ft{z-index: 5;}*/
+
+/* Float clearing fix using a clearing element (div or br) with a class of .clearer */
+.clearer {
+	clear: both;
+	height: 0px;
+}
+
+/* Elements using Phark text image replacement. See http://www.mezzoblue.com/tests/revised-image-replacement/ */
+.imgReplace,
+.imgReplace a,
+.ir {
+	text-indent: -3000em; /* Hide text for image replacement far off of left screen. */
+	overflow: hidden;
+}
+
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+
+
+.vCenterOuter {
+	display: table;
+	#position: relative;
+	overflow: hidden;
+	height: 100px;
+	background: black;
+	color: white;
+	width: 100%;
+}
+.vCenterInner {
+	display: table-cell;
+	#position: absolute;
+	#top: 50%;
+	vertical-align: middle;
+}
+.vCenter{
+	#position: relative;
+	#top: -50%;
+}
+
+.posTr{top:0;right:0;}
+.posTl{top:0;left:0;}
+.posBr{bottom:0;right:0;}
+.posBl{bottom:0;left:0;}
+
+
+
+/* Proportion grids */
+.lastUnit {overflow: hidden;_overflow:visible;_zoom:1; }
+.row,.line,.cols,.bar {display: block; clear: both;}
+.unit{float:left;width: auto;_zoom:1;}
+.lastUnit {float:none;_position:relative; _left:-3px; _margin-right: -3px;}
+.size1of1{float:none;}
+.size1of2,.tiles2>*{width:50%;}
+.size1of3,.tiles3>*{width:33.33333%;}
+.size2of3{width:66.66666%;}
+.size1of4,.tiles4>*{width:25%;}
+.size3of4{width:75%;}
+.size1of5,.tiles5>*{width:20%;}
+.size2of5{width:40%;}
+.size3of5{width:60%;}
+.size4of5{width:80%;}
+.size1of6,.tiles6>*{width:16.6666%;}
+.size5of6{width:83.3333%;}
+.size1of7{width: 14.286%;}
+.size2of7{width: 28.57%;}
+.size3of7{width: 42.857%;}
+.size4of7{width: 57.143%;}
+.size5of7{width: 71.43%;}
+.size6of7{width: 85.71%;}
+.sizelof8{width:12.5%;}
+.size3of8{width:37.5%;}
+.size5of8{width:62.5%;}
+.size7of8{width:87.5%;}
+.size1of9{width:11.1111%;}
+.size4of9{width:44.4444%;}
+.size5of9{width:55.5555%;}
+.size7of9{width:77.7777%;}
+.size8of9{width:88.8888%;}
+.size1of10{width:10%;}
+.size3of10{width:30%;}
+.size7of10{width:70%;}
+.size9of10{width:90%;}
+.size1of12{width:8.3333%;}
+.size5of12{width:41.6666%;}
+.size7of12{width:58.3333%}
+.size11of12{width:91.6666%;}
+
+
+.bar {
+	height: 2em;
+	padding: 8px;
+}
+
+/* We almost always want icons centered vertically */
+.iconLink img,
+  img.icon {
+	vertical-align: middle;
+}
+
+.uberMore {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+}
+.uberMore a {
+	text-decoration: none;
+}
+
+.dblArrow {
+	font-size: 145%;
+}
+
+.helpLink {
+	cursor: help;
+}
+
+/* http://unstoppablerobotninja.com/entry/fluid-images/ */
+img.fluid,
+.fluidImg img,
+object.fluid,
+.fluidObj object {
+	max-width: 100%;
+	-ms-interpolation-mode: bicubic; // for smoother scaled image rendering in IE7+
+}
+.uaLthFF2 img.fluid,
+.uaLthFF2 .fluidImg img,
+.uaLthFF2 object.fluid,
+.uaLthFF2 .fluidObj object {
+	max-width: none;
+}
+
+/* Classes for invisible elements */
+.skip, .hide, .print {
+  position: absolute;
+  top: -1000em;
+  left: -1000em;
+  height: 1px;
+  width: 1px;
+}
+
+/* Make skip links visible when using tab navigation */
+.skip:focus, .skip:active {
+  position: static;
+  top: 0;
+  left: 0;
+  height: auto;
+  width: auto;
+}
+
+.box,
+.mod {
+	margin-bottom: 1.54em;
+	padding: 0 8px 0 7px;
+	position: relative;
+	clear: both;
+}
+.hd,.bd,.ft {position: relative;}
+.mod .bd p.last,
+.mod .bd ul.last,
+.mod .bd ol.last,
+.mod .bd dl.last,
+.mod .bd blockquote.last,
+.mod .bd table.last {
+	margin-bottom: 0;
+}
+.lastMod { margin-bottom: 0 !important;}
+
+.ltMod,.ltMods .mod{padding-left:0;}
+.rtMod,.rtMods .mod{padding-right:0;}
+
+/* Media Blocks */
+.mediaBlockLt .media {float:left;margin-right: 8px;}
+.mediaBlockRt .media{float:right;margin-left: 8px;}
+.wrap .text{ _float:none; overflow:visible;}
+.wrap .media{margin:10px !important;}
+
+.sidebar,.sidebarLt, .sidebarRt {display: block;}
+.sidebarLt { float: left; margin: 0 10px 0 10px;}
+.sidebar,.sidebarRt {float: right;margin: 0 0 10px 10px;}
+
+.hLabelBlock {
+	overflow:hidden; _overflow:visible; zoom:1;
+}
+.hLabelBlock .label {
+	float: left;
+	text-align: right;
+}
+.hLabelBlock .labelContents {
+	float: left;	
+}
+
+.hList, .blockList {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.hList li {
+	float: left;
+}
+
+.hiPad{padding:20px;}
+.midPad{padding:15px;}
+.loPad{padding:10px;}
+.noPad{padding:0;}
+.noBotM{margin-bottom:0;}
+.noPadL{padding-left:0;}
+.noPadR{padding-right:0;}
+.hairPad{padding: 3px 7px;}
+
+
+.quiet{color:#666;}
+.loud{color:#000;font-weight:bold;}
+
+
+.note,.important {background: #ffd; }
+.highlight { background:#ff0; }
+
+.success,.ok,.yes,.go,.added,.correct{color:#060;/* green */}
+.fail,.no,.stop,.error,.removed,.wrong,.warning{color:#f00;/* red */}
+
+
