@@ -50,9 +50,6 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 a img { 
 	border: none;
 }
-ol, ul {
-	list-style: none;
-}
 blockquote, q {
 	quotes: none;
 }
@@ -68,12 +65,13 @@ q:before, q:after {
 }
 
 /* remember to highlight inserts somehow! */
-ins {
-	text-decoration: none;
-}
-del {
-	text-decoration: line-through;
-}
+ins { text-decoration: underline; }
+del { text-decoration: line-through; }
+strong, dfn { font-weight: bold; }
+em, dfn, cite { font-style: italic; }
+sup { bottom: 1ex; }
+sub { top: .5ex; }
+small { font-size: 12px; }
 
 /* Tables */
 table {
@@ -87,10 +85,14 @@ table.full { width: 100%; }
 table.fixed { table-layout:fixed }
 
 /* Start adding some real typographic and color style */
+
+html {
+	background-color: #ccc;
+}
 body {
 	font-family: Georgia,"Times New Roman",Times,serif;
-	color: #2f2f2f; 
-	background-color: #4672AF;
+	color: #2f2f2f;
+	position: relative;
 }
 
 /* Hide any <hr /> elements not in the main and sub content areas */
@@ -108,7 +110,7 @@ hr {
 	margin: 0 0 0.5em 0;
 	padding: 0 0 0.5em 0;
 	border:0;
-	border-bottom: 1px #eee solid;
+	border-bottom: 1px #ccc solid;
 }
 
 /* Headings */
@@ -116,42 +118,61 @@ h1,h2,h3,h4 {color:#000;}
 
 
 /* Links */  
-a, a:visited {
-	color: #0F3E83;
-}
-a:visited {
-	/*color: #3F6DAF;*/ /* lighter blue */
-}
-a, .menu a { 
-	text-decoration: none; 
-}
-a:hover, a:active { 
-	color: #000; 
-	background-color: #FFFBEF;
+.menu a {
+	text-decoration: none;
 }
 p a, ul a, ol a, dl a, blockquote a, table a { 
 	text-decoration: underline;
 }
 
 /* Make sure it looks like a quote/citation */
-blockquote  {
+blockquote, address  {
 	font-style: italic;
 }
+blockquote { color: #666; margin-left: 1.2em; }
 
 /* Make acronyms and abbreviations a bit distinct */
-acronym, abbr {
-  letter-spacing: .07em;
-  border-bottom: .1em dashed #c00;
-  cursor: help;
-}
-acronym {
-	text-transform: uppercase;
-}
+abbr[title], acronym[title], dfn[title] { cursor: help; border-bottom: .1em dotted #c00; }
+acronym { text-transform: uppercase; }
 
 /* keep the 20px vertical rhythm with bottom margins */
 p, ul, ol, dl, blockquote {
 	margin-bottom: 1.54em;
 }
+
+/* monospace */
+code, pre {  line-height: 15px; }
+var, kbd, samp, code, pre { font-family: Consolas, "Andale Mono", Courier, "Courier New", monospace; background: #fafafa; }
+kbd { font-weight: bold; }
+samp, var { font-style: italic; }
+pre { white-space: pre; overflow: auto; padding: 10px; border: 1px solid #ddd; clear: both; }
+code { padding: 0px 3px; }
+
+
+caption { text-align: left; }
+
+/* Forms */
+input, textarea, button { font-family: "Lucida Grande";background: #fafafa; border-color: #666; border-style: solid; border-width: 1px; color: #444; }
+input, textarea { padding: 3px; }
+button { padding: 2px 10px; cursor: pointer; }
+input:focus, textarea:focus, button:hover { background: #fff; border-color: #777 #ccc #ccc #777; }
+
+
+ol, ul {
+	padding-left: 0;
+	margin-left: 1.2em;
+}
+/* nested lists */
+li ul, li ol { margin-bottom: 0; }
+ul ul, ol ol, ul ol, ol ul { margin-bottom: 0; }
+
+ol { list-style-type: decimal; }
+
+ul { list-style: disc outside; }
+ul ul { list-style: circle outside; }
+ul ul ul { list-style: square outside; }
+
+dt { font-weight: bold; }
 
 
 
@@ -164,32 +185,44 @@ in every case and context. Some are also used for development and debugging.
 */
 
 /* Document wrapper. Constrains the width of the centered page. */
-.pageW,.pagePad {
+.pageW,
+.pagePad,
+.contentPad {
 	margin:0 auto;
 	text-align: left; /* necessary to override the IE5/6 page centering hack used in grids.css */
 	position: relative;
 }
 .pageW,.docWrap {
-		width: 1008px;
+		width: 960px;
 }
 .liquid .pageW {
-	width: 100%;
-	min-width: 1008px;
+	min-width: 960px;
 }
 .pagePad {
-	width: 976px;
-	padding: 0 16px; /* keep a litte space between edge of pages and the viewport/scrollbars */
+	width: 920px;
+	padding: 0 20px; /* keep a litte space between edge of pages and the viewport/scrollbars */
 }
 .contentPad {
 	width: 946px;
 	padding: 0 31px;
 }
+.liquid .pageW,
+.liquid .pagePad,
+.liquid .contentPad {
+	width: auto;
+}
 
 
 /* Elements needing easy clearing fix. See http://www.positioniseverything.net/easyclearing.html */
+
+#header,
+#sectHeader,
 #content,
+#footer,
 .docWrap,
+.hd,
 .bd,
+.ft,
 .mediaBlockLt,
 .mediaBlockRt,
 .mediaBlockLt .text,
@@ -205,9 +238,14 @@ in every case and context. Some are also used for development and debugging.
 .clearFix { 
 	display: inline-block; /* add hasLayout in IE7. see http://www.tanfa.co.uk/css/examples/haslayout/tripswitch-demo.asp*/
 }
+#header:after,
+#sectHeader:after,
 #content:after,
+#footer:after,
 .docWrap:after,
+.hd:after,
 .bd:after,
+.ft:after,
 .mediaBlockLt:after,
 .mediaBlockRt:after,
 .mediaBlockLt .text:after,
@@ -227,9 +265,14 @@ in every case and context. Some are also used for development and debugging.
   visibility: hidden;
   height: 0;
 }
+#header,
+#sectHeader,
 #content,
+#footer,
 .docWrap,
+.hd,
 .bd,
+.ft,
 .mediaBlockLt,
 .mediaBlockRt,
 .mediaBlockLt .text,
@@ -246,6 +289,22 @@ in every case and context. Some are also used for development and debugging.
 	display: block;
 }
 
+#sectHeader,
+#content,
+#footer,
+.hd,
+.bd,
+.ft,
+.row {
+	clear:both;
+}
+#header1a,
+#sectHeader1a,
+#content1a,
+#footer1a {
+	position: relative;
+}
+
 .x1, .x1 span,.x2, .x2 span, .x3, .x3 span, .x4, .x4 span {position: absolute; display: block;}
 /*.x1{z-index:1;} .x2{z-index:2;} .x3{z-index:3;} .x4{z-index:4;} .hd,.bd,.ft{z-index: 5;}*/
 
@@ -257,12 +316,14 @@ in every case and context. Some are also used for development and debugging.
 
 /* Elements using Phark text image replacement. See http://www.mezzoblue.com/tests/revised-image-replacement/ */
 .imgReplace,
-.imgReplace a,
 .ir {
 	text-indent: -3000em; /* Hide text for image replacement far off of left screen. */
 	overflow: hidden;
 }
-
+.imgReplace a,
+.ir a {
+	cursor: pointer;
+}
 .left {
 	float: left;
 }
@@ -272,13 +333,8 @@ in every case and context. Some are also used for development and debugging.
 
 
 .vCenterOuter {
-	display: table;
+	display: table !important;
 	#position: relative;
-	overflow: hidden;
-	height: 100px;
-	background: black;
-	color: white;
-	width: 100%;
 }
 .vCenterInner {
 	display: table-cell;
@@ -286,11 +342,12 @@ in every case and context. Some are also used for development and debugging.
 	#top: 50%;
 	vertical-align: middle;
 }
-.vCenter{
+.vCenter {
 	#position: relative;
 	#top: -50%;
 }
 
+.posTr,.posTl,.posBr,.posBl{position: absolute;}
 .posTr{top:0;right:0;}
 .posTl{top:0;left:0;}
 .posBr{bottom:0;right:0;}
@@ -363,7 +420,10 @@ in every case and context. Some are also used for development and debugging.
 }
 
 .dblArrow {
-	font-size: 145%;
+	font-family: Arial;
+	font-size: 130%;
+	position: relative;
+	line-height: 72.8%;
 }
 
 .helpLink {
@@ -371,10 +431,8 @@ in every case and context. Some are also used for development and debugging.
 }
 
 /* http://unstoppablerobotninja.com/entry/fluid-images/ */
-img.fluid,
-.fluidImg img,
-object.fluid,
-.fluidObj object {
+img,
+object {
 	max-width: 100%;
 	-ms-interpolation-mode: bicubic; // for smoother scaled image rendering in IE7+
 }
@@ -429,6 +487,10 @@ object.fluid,
 .mediaBlockRt .media{float:right;margin-left: 8px;}
 .wrap .text{ _float:none; overflow:visible;}
 .wrap .media{margin:10px !important;}
+/* Images acting like media blocks */
+img.alignleft { float: left; margin-right: 20px; margin-top: 5px; }
+img.alignright { display: block; float: right; margin-left: 20px; margin-top: 5px; }
+img.aligncenter { margin-left: auto; margin-right: auto; display: block; clear: both; margin-top: 5px; }
 
 .sidebar,.sidebarLt, .sidebarRt {display: block;}
 .sidebarLt { float: left; margin: 0 10px 0 10px;}
@@ -445,10 +507,13 @@ object.fluid,
 	float: left;	
 }
 
-.hList, .blockList {
-	list-style: none;
-	padding: 0;
-	margin: 0;
+.hList,
+.hList ul,
+.blockList,
+.blockList ul {
+	list-style: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
 }
 .hList li {
 	float: left;
@@ -463,6 +528,72 @@ object.fluid,
 .noPadR{padding-right:0;}
 .hairPad{padding: 3px 7px;}
 
+/* Generic dark overlay for modal dialogs, etc.
+   -------------------------------------------- */
+.overlay, 
+.overlayDarken,
+.overlayLighten {
+
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.overlay, .overlayDarken { 
+	background-color: #000;
+	-moz-opacity: 0.8;
+	opacity:.80;
+	filter: alpha(opacity=80);
+}
+.overlayLighten {
+	background-color:#fff;
+	-moz-opacity: 0.5;
+	opacity:.50;
+	filter: alpha(opacity=50);
+}
+
+/* Generic highlighted information box
+   ----------------------------------- */
+.highlightBox {
+	margin-bottom: 1.54em;
+	background-color: #FFFFCC;
+	padding: .615em 10px;
+	border: 2px solid #F3EEB3;
+	position: relative;
+}
+
+
+/* Generic line divider
+   -------------------- */
+.divider {
+	height: 1px;
+	margin: 1.8em 0;
+	background: url(../../images/lines/horiz_dot_black.png) left center repeat-x;
+}
+.divider hr {
+	position: absolute;
+	left: -5000px;
+	height: 1px;
+	color: #fff;
+}
+
+
+/* Toolbar positioned top-right panel-style 
+   ---------------------------------------- */
+.mod .hd .toolbar {
+	vertical-align: middle;
+	position: absolute !Important;
+	right: 0px;
+	top: 0;
+	display: block;
+	width: auto;
+}
+
+/* Basic Alignments */
+.left,.alignleft { float: left; }
+.right,.alignright { float: right; }
+.center,.aligncenter { margin-left: auto; margin-right: auto; display: block; clear: both; }
 
 .quiet{color:#666;}
 .loud{color:#000;font-weight:bold;}
@@ -473,5 +604,4 @@ object.fluid,
 
 .success,.ok,.yes,.go,.added,.correct{color:#060;/* green */}
 .fail,.no,.stop,.error,.removed,.wrong,.warning{color:#f00;/* red */}
-
 
