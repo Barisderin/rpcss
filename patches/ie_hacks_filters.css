@@ -1,0 +1,103 @@
+/* See: http://www.webdevout.net/css-hacks 
+		http://www.positioniseverything.net/articles/ie7-dehacker.html
+		http://centricle.com/ref/css/filters/
+*/
+
+/* Serve only to IE 5,6,7 */
+
+/* Doesn't validate */
+.ie567 {
+	color: red;
+}
+.ie567 { 
+	*color:green;
+}
+
+/* Validates */
+*:first-child+html .ie567 { /* for IE7 */
+	color: green;
+}
+* html .ie567 { /* for IE 5,6 */
+	color: green;
+}
+
+
+/* Serve only to IE 5,6 
+   -------------------- */
+.ie56 {
+	color: red;
+	_color: green;
+}
+
+/* OR */
+.ie56 {
+	color: red;
+	color: green !important;
+}
+
+/* OR */
+.ie56 {
+	color: red;
+}
+* html .ie56 {
+	color:  green;
+}
+
+/* Serve only to IE 6,7 */
+* html .ie67 {
+	c\olor: green; /* Show in IE6. Hide from IE5. */
+}
+*:first-child+html .ie67 {
+	color: green;
+}
+.ie67 {
+	color: red;
+}
+
+/* Serve only to IE 6 */
+.ie6 {
+ 	color: red; /* Show in all other browsers */
+}
+* html .ie6 {
+	c\olor: green; /* Show in IE6. Hide from IE5. */
+}
+
+
+
+/* Serve only to IE 7 */
+.ie7 {
+	color: red;
+}
+*:first-child+html .ie7 {
+	color: green;
+}
+
+
+/* Serve only to IE 7 and modern browsers */
+
+.ie7Modern {
+	color: red;
+}
+*+html .ie7Modern {
+	color: green;
+}
+
+/* OR */
+.ie7Modern {
+	color: red;
+}
+html>body .ie7Modern {
+	color: green;
+}
+
+
+/* Serve only to modern browsers, not IE7 or below */
+.modern {
+	color: red;
+}
+html>/**/body .modern {
+	color: green;
+}
+
+
+

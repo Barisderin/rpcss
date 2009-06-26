@@ -1,0 +1,23 @@
+/**
+ * (en) Stability fixes with 'position:relative'
+ * (de) Stabilitätsverbesserungen durch 'position:relative'
+ *
+ * @bugfix
+ * @affected   IE 5.x/Win, IE6, IE7
+ * @css-for    IE 5.x/Win, IE6, IE7
+ * @valid      yes
+ */
+
+body { position:relative; }  /* Essential in IE7 for correct layout scaling ... */
+
+/**
+ * (en) Forcing vertical scrollbars is not needed in IE (only for Firefox/Netscape/Safari)
+ * (de) Erzwingen vertikaler Scrollbalken im IE nicht benötigt (nur im Firefox/Netscape/Safari)
+ *
+ * @workaround
+ * @affected   IE 5.x/Win, IE6, IE7
+ * @css-for    IE 5.x/Win, IE6, IE7
+ * @valid      yes
+ */
+
+html { height: auto; margin-bottom:0; }

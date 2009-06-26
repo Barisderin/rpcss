@@ -1,0 +1,54 @@
+
+
+/**
+ * (en) Debugging: When you see a green background, IE is getting this stylesheet
+ * (de) Fehlersuche: Hintergrund leuchtet grün, wenn das Stylesheet korrekt geladen wurde
+ *
+ * @debug
+ * @app-yaml-default disabled
+ */
+
+/* body { background: #0f0; background-image: none; }  */
+
+/**
+ * (en) Global fix of the Italics bugs in IE 5.x and IE 6
+ * (de) Globale Korrektur des Italics Bugs des IE 5.x und IE 6
+ *
+ * @bugfix
+ * @affected   IE 5.x/Win, IE6
+ * @css-for    IE 5.x/Win, IE6
+ * @valid      yes
+ */
+/* http://www.positioniseverything.net/explorer/italicbug-ie.html */
+body * { overflow:visible; }
+iframe, frame { overflow:auto; }
+frameset { overflow:hidden; }
+
+
+/**
+ * (en) Forcing vertical scrollbars is not needed in IE (only for Firefox/Netscape/Safari)
+ * (de) Erzwingen vertikaler Scrollbalken im IE nicht benötigt (nur im Firefox/Netscape/Safari)
+ *
+ * @workaround
+ * @affected   IE 5.x/Win, IE6, IE7
+ * @css-for    IE 5.x/Win, IE6, IE7
+ * @valid      yes
+ */
+
+html { height: auto; margin-bottom:0; }
+
+
+/*------------------------------------------------------------------------------------------------------*/
+
+/**
+ * (en) Fixes IE5.x and IE6 overflow behavior of textarea and input elements elements
+ * (de) Korrigiert das fehlerhafte overflow-Verhalten von textarea und input-Elementen
+ *
+ * @workaround
+ * @affected   IE 5.x/Win, IE6
+ * @css-for    IE 5.x/Win, IE6
+ * @valid      no
+ */
+
+textarea { overflow:scroll; overflow-x: hidden; }
+input { overflow: hidden; }
