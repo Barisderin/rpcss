@@ -4,7 +4,7 @@
 ******************************************************************************/
 
 /* Reset font size for all elements to a single standard (16 pixels in most browsers).
-   Percent % to avoid IE ems bugs and .1 to fix rounding errors when scaling font size in older Opera versions
+   Percent % to avoid IE ems bugs and .01 to fix rounding errors when scaling font size in older Opera versions
 */
 html * { font-size: 100.01% }
 
@@ -47,9 +47,11 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	vertical-align: baseline;
 	background: transparent;
 }
-a img { 
-	border: none;
-}
+
+/* clear the default borders */
+fieldset, a img { border: 0 solid; }
+
+/* clear out quotes */
 blockquote, q {
 	quotes: none;
 }
@@ -89,29 +91,17 @@ table.fixed { table-layout:fixed }
 html {
 	background-color: #ccc;
 }
+
+/* Force scrollbar so layout doesn't jump between navigation from short to long pages */
+html { height: 100%; margin-bottom: 1px; }
+
 body {
 	font-family: Georgia,"Times New Roman",Times,serif;
 	color: #2f2f2f;
 	position: relative;
 }
 
-/* Hide any <hr /> elements not in the main and sub content areas */
-hr {
-	position: absolute;
-	left: -3000px;
-}
-#main hr,
-#sub1 hr,
-#sub2 hr,
-#sub3 hr {
-	position: static;
-	color: #fff;
-	background:transparent;
-	margin: 0 0 0.5em 0;
-	padding: 0 0 0.5em 0;
-	border:0;
-	border-bottom: 1px #ccc solid;
-}
+
 
 /* Headings */
 h1,h2,h3,h4 {color:#000;}
@@ -213,31 +203,14 @@ in every case and context. Some are also used for development and debugging.
 }
 
 
-/* Elements needing easy clearing fix. See http://www.positioniseverything.net/easyclearing.html */
+/* Elements needing easy clearing fix. 
+   See: http://www.positioniseverything.net/easyclearing.html
+        http://www.456bereastreet.com/archive/200603/new_clearing_method_needed_for_ie7/#comment28
+	    (alternative overflow:hidden) http://www.sitepoint.com/blogs/2005/02/26/simple-clearing-of-floats/
+		overflow:hidden causes elements with negative margins protruding outside the container to be clipped
+ */
 
-#header,
-#sectHeader,
-#content,
-#footer,
-.docWrap,
-.hd,
-.bd,
-.ft,
-.mediaBlockLt,
-.mediaBlockRt,
-.mediaBlockLt .text,
-.mediaBlockRt .text,
-.row,
-.line,
-.cols,
-.bar,
-.toolbar,
-.btnBar,
-.hList,
-.blockList
-.clearFix { 
-	display: inline-block; /* add hasLayout in IE7. see http://www.tanfa.co.uk/css/examples/haslayout/tripswitch-demo.asp*/
-}
+
 #header:after,
 #sectHeader:after,
 #content:after,
@@ -265,6 +238,30 @@ in every case and context. Some are also used for development and debugging.
   visibility: hidden;
   height: 0;
 }
+
+#header,
+#sectHeader,
+#content,
+#footer,
+.docWrap,
+.hd,
+.bd,
+.ft,
+.mediaBlockLt,
+.mediaBlockRt,
+.mediaBlockLt .text,
+.mediaBlockRt .text,
+.row,
+.line,
+.cols,
+.bar,
+.toolbar,
+.btnBar,
+.hList,
+.blockList
+.clearFix { 
+	display: inline-block; /* Trigger hasLayout in IE7. see http://www.tanfa.co.uk/css/examples/haslayout/tripswitch-demo.asp*/
+}
 #header,
 #sectHeader,
 #content,
@@ -288,6 +285,30 @@ in every case and context. Some are also used for development and debugging.
 .clearFix { 
 	display: block;
 }
+
+* html #header,
+* html #sectHeader,
+* html #content,
+* html #footer,
+* html .docWrap,
+* html .hd,
+* html .bd,
+* html .ft,
+* html .mediaBlockLt,
+* html .mediaBlockRt,
+* html .mediaBlockLt .text,
+* html .mediaBlockRt .text,
+* html .row,
+* html .line,
+* html .cols,
+* html .bar,
+* html .toolbar,
+* html .btnBar,
+* html .hList,
+* html .blockList,
+* html .clearFix { height:1px; } /* Trigger haslayout for IE6. Placed here to keep the clearfix rules together */
+
+
 
 #sectHeader,
 #content,
@@ -396,6 +417,11 @@ in every case and context. Some are also used for development and debugging.
 .size7of12{width:58.3333%}
 .size11of12{width:91.6666%;}
 
+.equalize { overflow:visible; display:table; table-layout:fixed; }
+.equalize .unit {
+  display:table-cell; vertical-align:top;
+  float:none; margin:0; overflow:hidden;
+}
 
 .bar {
 	height: 2em;
@@ -492,6 +518,14 @@ img.alignleft { float: left; margin-right: 20px; margin-top: 5px; }
 img.alignright { display: block; float: right; margin-left: 20px; margin-top: 5px; }
 img.aligncenter { margin-left: auto; margin-right: auto; display: block; clear: both; margin-top: 5px; }
 
+
+
+.captionBlock img, .captionBlock object, .captionBlock dt { padding:0; display: block; }
+.captionBlock strong, .captionBlock dd { display:block; overflow:hidden; margin-top: 2px; padding: 0.3em 0.5em; background: #eee; font-weight: normal; font-size: 91.667%; }
+
+
+
+
 .sidebar,.sidebarLt, .sidebarRt {display: block;}
 .sidebarLt { float: left; margin: 0 10px 0 10px;}
 .sidebar,.sidebarRt {float: right;margin: 0 0 10px 10px;}
@@ -566,16 +600,20 @@ img.aligncenter { margin-left: auto; margin-right: auto; display: block; clear: 
 
 /* Generic line divider
    -------------------- */
-.divider {
+hr {
+	color: #fff;
+	background: transparent;
+	border: 0;
 	height: 1px;
-	margin: 1.8em 0;
-	background: url(../../images/lines/horiz_dot_black.png) left center repeat-x;
+}
+hr, .divider {
+	border-bottom: 1px #eee solid;
+	margin: 0 0 1.54em 0;
 }
 .divider hr {
 	position: absolute;
 	left: -5000px;
 	height: 1px;
-	color: #fff;
 }
 
 
