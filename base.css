@@ -589,7 +589,7 @@ img.aligncenter { margin-left: auto; margin-right: auto; display: block; clear: 
 
 /* Generic highlighted information box
    ----------------------------------- */
-.highlightBox {
+.msg, .infoBox, .highlightBox {
 	margin-bottom: 1.54em;
 	background-color: #FFFFCC;
 	padding: .615em 10px;
