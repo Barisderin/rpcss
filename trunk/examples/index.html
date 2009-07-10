@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- ##PAGE-META## -->
+<title>##SITE-NAME## | ##NAME##</title>
+<link rel="stylesheet" href="../base.css" type="text/css" media="screen" />
+<!-- ##PAGE-CSS## -->
+<script src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" charset="utf-8">
+	google.load("jquery", "1.3.2");
+</script>
+<script src="../scripts/rpcss.js" type="text/javascript" charset="utf-8"></script>
+<!--[if lt IE 7]>
+<script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE7.js" type="text/javascript"></script>
+<![endif]-->
+<!--[if IE 6 ]>
+<link rel="stylesheet" href="../patches/ie6.css" type="text/css" media="screen" title="ie6" />
+<![endif]-->
+<!--[if IE 7 ]>
+<link rel="stylesheet" href="../patches/ie7.css" type="text/css" media="screen" title="ie7" />
+<![endif]-->
+<script src="patches/style.js" type="text/javascript" charset="utf-8"></script>
+<script src="../scripts/jquery.auto_with_cols.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+(function($){
+	$('document').ready(function(){
+		$('.tilesRow').autoWidthColumns();
+	});
+})(jQuery);
+
+</script>
+<style type="text/css" media="screen">
+#tilesRowTest .unit {
+	background: red;
+	color: white;
+}
+</style>
+
+
+</head>
+<body class="">
+	<div id="page" class="pageW">
+
+		<div id="header">
+			<div id="header1a" class="pagePad row">
+				<div id="skipToNav" class="skip">
+					<strong>Skip directly to:</strong>
+				</div>
+				<div id="branding" class="unit size2of3">
+					<a id="logo" href="/"><!-- BEGIN:SITE-NAME -->Template<!-- END:SITE-NAME --></a>
+				</div>
+				<div id="globalNav" class="lastUnit size1of3 hList">
+					<!-- NAVIGATION-LEVEL-2 -->
+				</div>
+			</div>
+		</div>
+
+		<div id="sectHeader">
+			<div id="sectHeader1a" class="pagePad">
+				<div id="sectTitle">
+					Section Title
+				</div>
+				<!-- NAVIGATION-BREADCRUMB -->
+			</div>
+		</div>
+
+		<div id="content">
+			<div id="content1a" class="row pagePad">
+
+				<!-- BEGIN:CONTENT -->
+				<div id="main" class="row unit size2of3">
+
+					
+					<div id="main1a" class="unit size3of4">
+						<div class="equalize row" style="height: 200px;">
+							<div class="unit size1of2" style="background: pink;">
+								<p>Column 1</p>
+							</div>
+							<div class="unit size1of2" style="background: pink;">
+								<p>Column 2</p>
+							</div>
+
+						</div>
+						<div class="divider"><hr /></div>
+						
+						<div class="tiles4 tiles row">
+							<div class="unit">
+								one
+							</div>
+							<div class="unit">
+								one
+							</div>
+							<div class="unit">
+								one
+							</div>
+							<div class="unit">
+								one
+							</div>
+							
+						</div>
+						<div id="tilesRowTest" class="tilesRow tiles row">
+							<div class="unit">
+								one
+							</div>
+							<div class="unit">
+								<p>Here is some text that is a little longer.</p>
+							</div>
+							<div class="unit">
+								one
+							</div>
+							<div class="unit">
+								<p>Here is some text that is a little longer. asflkj asf;ljk asfd;lj sfal;jk </p>
+								
+							</div>
+							<div class="unit">
+								<p>Here is some text that is a little longer. asflk;lj sfal;jk </p>
+							</div>
+							<div class="unit">
+								one
+							</div>
+							
+						</div>
+						
+						<dl class="captionBlock" style="width:100px;border:1px solid red; clear:both;">
+							<dt style="height:72px">image here</dt><dd>This is the caption</dd><dd>This is the caption</dd>
+						</dl>
+						<div class="unit row size2of3">
+							<div id="mod1" class="mod">
+								<div class="hd">
+									<h2>Module heading</h2>
+								</div>
+								<div class="bd">
+									Module body
+								</div>
+							</div>
+						</div>
+						<div class="unit size1of3">
+							<div id="mod2" class="mod">
+								<div class="hd">
+									<h2>Module heading</h2>
+								</div>
+								<div class="bd">
+									Module body
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="main1b" class="size1of4 lastUnit">
+						<div id="mod3" class="mod">
+							<div class="hd">
+								<h2>Module heading</h2>
+							</div>
+							<div class="bd">
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div id="sub1" class="lastUnit size1of3">
+					Sub Content
+				</div>
+				<!-- END:CONTENT -->
+				
+
+			</div>
+
+		</div>
+
+		<div id="footer">
+			<div id="footer1a" class="pagePad">
+				<p>Footer</p>
+			</div>
+		</div>
+
+	</div>
+	<!-- <div class="overlay"></div> -->
+</body>
+</html>

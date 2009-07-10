@@ -1,0 +1,163 @@
+Browser patching and enhancement
+	CSS reset
+	Progressive enhancement
+		http://www.alistapart.com/articles/testdriven/
+			with state-scope test added for ir
+				http://www.sitepoint.com/article/image-replacement-state-scope/
+		Modernizer script
+		Style HTML5 elements now
+	
+	Eye-candy
+		Rounded corners
+		Drop shadows
+		Custom borders (Fancybox)
+	Tables
+		Striped tables
+		(P) datatable
+		(P) Scrolling table
+		(P) Paginated table
+	Typography
+		Consistent sizing
+		truncated text
+		(P) sifr, cufon
+	Media viewing
+		image rotation, custom border, and drop shadow
+		(P) wizard, slideshow, carousel, pagination
+		(P) thumbnail enlargements
+			fisheye
+			fancyzoom
+		Proportionally scaling images (forgiving widths)
+		(P) Flowplayer video player (automatically plays linked videos)
+	Forms
+		(P) Interactions
+			Default text disappears on input focus
+			Highlight input on focus
+			Help tips
+			Validation
+			Repeating fields
+	Layout
+		Layout adaptability
+			Toggle to liquid layout by adding class of "liquid" to body
+			viewport resize body class switcher
+				http://www.jasons-toolbox.com/JSwitchy/
+			Proportionally scaling images in liquid layouts
+		Equal height columns
+		force vertical scrollbars
+		cross-browser inline-block support with class .inline-block
+		Auto clearing of float boxes
+	anchor linked content highlighting
+	(P) tooltips
+	Default microformats handling
+		
+	IE bugs
+		adds hasLayout to critical elements
+		fixes fieldset bg color bleed into legend IE bug
+	
+Design/Dev starting point
+	Layout element archetypes
+		Proportionals column grids
+		Gallery grids
+		Tile grids
+		Bar
+		Ubermore
+		Button bar
+		Scaleable button
+		Media Block
+		Block List
+		Horizontal List
+		Module
+		Aside
+		Pagination
+		Search bar
+	Utility classes
+		Image replacement
+		Vertical centering
+		Vertical rhythm
+	(P) Interaction archetypes (aka widgets)
+		Tabs
+		Tooltip
+		Toggle
+		Hierarchical dropdown menu
+		Hierarchical dropline menu
+		overlay
+		style switcher
+		text resizer
+		wizard, slideshow, carousel, pagination
+		thumbnail enlargements
+			fisheye
+			fancyzoom
+	markup construct snippets
+		for Textmate
+		for Eclipse
+		for Dreamweaver
+	Page layouts
+		Fixed header, footer, left, right
+		Source ordered 3 column layouts
+		Horizontal
+		Viewport
+	icons and bullet graphics
+	typographic flourishes
+		dropcap
+		pull quotes
+		double arrow
+	bg images
+	borders
+	buttons
+	placeholder images
+	Templates for Javascript application design patterns
+	print stylesheet
+Reference
+	Links to solutions
+	Examples of techniques
+		Percent width plus pixels
+		Fancy box
+		Equal height columns
+		Scaling background images
+	Tips:
+		Multiple IEs
+		Debugging tools in all browsers
+	Recommended browser extensions
+
+Principles
+	Progressive enhancement / Unobtrusive JS
+	Accessible (especially tables and forms)
+		Skip content areas
+	Flexibility
+		Pluggable solutions
+		Aliased class and ID names
+	OOCSS
+	Conform to conventions found elsewhere
+		JQuery UI
+	Hacks in separate stylesheets (at least for IE)
+	
+	
+Tools
+	
+	Debugging/diagnostic CSS
+		Fill text
+		Grid graphics
+		Colorify
+	Optimization
+		Concatenate
+		Minify
+		Compressor
+		Gzip
+		CSS Sprite creator
+	Conveniences
+		Variables, LessCSS
+		JQuery page states plugin
+	
+	Textmate bundle
+	bookmarklets
+	Suggested browser extensions
+	
+	
+	
+	
+
+
+SCRIPTS:
+
+
+
+IMAGES:

@@ -1,4 +1,5 @@
 /* See: http://www.webdevout.net/css-hacks 
+		http://www.brunildo.org/test/csshacks.html
 		http://www.positioniseverything.net/articles/ie7-dehacker.html
 		http://centricle.com/ref/css/filters/
 */
@@ -50,6 +51,7 @@
 *:first-child+html .ie67 {
 	color: green;
 }
+
 .ie67 {
 	color: red;
 }
@@ -68,7 +70,7 @@
 .ie7 {
 	color: red;
 }
-*:first-child+html .ie7 {
+*+html .ie7 {
 	color: green;
 }
 
@@ -78,7 +80,7 @@
 .ie7Modern {
 	color: red;
 }
-*+html .ie7Modern {
+html>body .ie7Modern {
 	color: green;
 }
 
@@ -101,3 +103,63 @@ html>/**/body .modern {
 
 
 
+/* To give hasLayout 
+
+http://reference.sitepoint.com/css/haslayout
+http://www.satzansatz.de/cssd/onhavinglayout.html
+http://www.communitymx.com/content/article.cfm?page=2&cid=C37E0
+http://www.positioniseverything.net/articles/haslayout.html
+*/
+
+/* IE 6,7 */
+.hasLayout {
+	zoom: 1;
+}
+
+/* IE 5,6 (hide from 7) */
+.hasLayout {
+	height: 1%;
+}
+
+/* To get display: inline-block behavior 
+
+http://www.brunildo.org/test/InlineBlockLayout.html
+http://www.brunildo.org/test/inline-block.html
+http://www.brunildo.org/test/BackgroundBorderLayout.html
+*/
+
+/* on inline elements */
+/* in all IE 5+ */
+span.inline-block {
+	zoom: 1; /* give hasLayout in IE6+ without setting dimensions */
+	height: 0; /* give hasLayout in IE5+ */
+}
+/* in IE 6+ */
+span.inline-block {
+	/* only actually sets display to inline-block in IE7+.
+	   IE6 makes inline elements with hasLayout behave like
+	   they have display:inline-block.
+	*/
+	display: inline-block; 
+}
+
+/* on block elements */
+/* in IE 5,6,7 (hide from 8+) 
+   The two separate rules are necessary. Won't work if one rule.
+   IE <7 don't actually support display:inline-block, but that will
+   set hasLayout. You then need to set display:inline after to create
+   an inline-block behavior.
+*/
+div.inline-block {
+	display: inline-block;
+}
+div.inline-block {
+	display: inline;
+}
+
+
+
+/* Fix min-height, min-width, max-height, max-width */
+
+
+/* Fix position:fixed */

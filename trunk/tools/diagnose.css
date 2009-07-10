@@ -1,0 +1,438 @@
+/* diagnose.css
+
+http://www.syntacticweb.co.uk/cssd/diagnose.css
+
+Site diagnosis
+
+See the css-d Wiki for full information regarding the use of User Stylesheets
+for diagnostic purposes:-
+http://css-discuss.incutio.com/?page=DiagnosticCss
+
+Generated content (:before and :after) is kept compact so that re-flow of the 
+displayed page is minimised. The size is absolute at 9px. 
+You may want to do a find-and-replace if this is too small for your particular set-up. 
+For the same reason, borders and padding for diagnosis are kept to a minimum and 
+colour/background is often used.
+
+In general, red/amber is used to diagnose problems whilst green (or blue) is used 
+to indicate desirable (or at least neutral) features.
+
+Opera and Gecko (Firefox/Mozilla/NS7) support almost all diagnostics
+but see individual notes below.
+Most diagnostics fail in IE6 and earlier but div, table and cell borders are shown; 
+also the font, blockquote and list diagnostics.
+
+Jim Wilkinson
+http://www.syntacticweb.co.uk
+syntactic at btinternet dot com
+
+17/11/02	JKW	Added table metrics
+20/12/02	JKW	Extra notes (CSS unchanged)
+29/12/02	JKW	Made headings diagnostic consistent
+01/01/03	JKW	Added browser support notes
+09/02/03	JKW	Overflow
+23/02/03	JKW	Overflow - exclude div
+15/06/03	JKW	Ref. to css-d Wiki
+21/11/04	JKW	Commented table diagnostics back in and add th/td id/class;
+			diagnose dl, deprecated elements
+
+*/
+
+/* --- General --- */
+
+/* Give precedence to diagnostics over content, especially for heavily nested
+table-based structures.
+Div is excluded: divs often overflow body in table-less designs */
+th, td {
+overflow: hidden;
+}
+
+
+/* --- Title --- */
+
+/* Not Gecko */
+
+title {
+position: absolute;
+top: 1px;
+left: 1px;
+display: block;
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: bold 9px Verdana, sans-serif;
+text-align: left;
+overflow: hidden;
+}
+
+
+/* --- CSS Signature --- */
+
+body[id]:before {
+content: "Site signature: #" attr(id);
+position: absolute;
+top: 1px;
+left: 500px;
+display: block;
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+text-align: left;
+}
+
+
+/* --- Body --- */
+
+/* Green border; white BG (optional) */
+
+html {
+margin: 18px 0 20px 0 !important;
+}
+
+body {
+margin: 1px;
+border: 1px solid #0C0 !important;
+/* background: #FFF !important; */
+}
+
+
+/* --- Divs --- */
+
+/* Grey border, w/ id or class */
+
+div {
+border: 1px solid #CCC !important;
+}
+
+div[id]:before {
+content: "div#" attr(id);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+div[class]:before {
+content: "div." attr(class);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+
+/* --- Tables --- */
+
+/* table/th/td: green/dark blue/blue borders */
+
+table {
+border: 1px solid #0C0 !important;
+border-collapse: separate !important;
+border-spacing: 1px !important;
+empty-cells: show !important;
+}
+
+th {
+border: 1px solid #009 !important;
+padding: 2px;
+}
+
+td {
+border: 1px solid #00F !important;
+padding: 2px;
+}
+
+/* Tables w/ id or class (corrupts diagnosis in Opera 5 and 6; okay in O7;
+not supported by Gecko) */
+
+table[id]:before {
+content: "table#" attr(id);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+table[class]:before {
+content: "table." attr(class);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+th[id]:before {
+content: "th#" attr(id);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+th[class]:before {
+content: "th." attr(class);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+td[id]:before {
+content: "td#" attr(id);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+td[class]:before {
+content: "td." attr(class);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+
+/* --- Headings --- */
+
+/* All document headings should use <hx>. Shown green for IE's benefit */
+
+h1, h2, h3, h4, h5, h6 {
+color: #090 !important;
+}
+
+h1:before, h2:before, h3:before, h4:before, h5:before, h6:before {
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+h1:before {
+content: "h1";
+}
+
+h2:before {
+content: "h2";
+}
+
+h3:before {
+content: "h3";
+}
+
+h4:before {
+content: "h4";
+}
+
+h5:before {
+content: "h5";
+}
+
+h6:before {
+content: "h6";
+}
+
+
+/* --- Deprecated elements; also blockquote since it may be misused to indent --- */
+
+/* Yellow BG */
+
+applet, basefont, center, dir, font, isindex, menu, strike, u, blockquote, i, b {
+background: #FFC !important;
+}
+
+applet *, basefont *, center *, dir *, font *, isindex *, menu *,
+strike *, u *, blockquote *, i *, b * {
+background: #FFC !important;
+}
+
+
+/* --- Lists --- */
+
+/* Lists: ol, ul, dl black border, pale khaki BG; li, dd khaki; dt grey
+will not show FONT use (but elements within them will) */
+
+ol, ul, dl, font ol, font ul, font dl {
+border: 1px solid #000 !important;
+border-collapse: separate !important;
+background: #FCFCF9 !important;
+}
+
+li, dd, font li, font dd {
+background: #E9E9D0 !important;
+}
+
+dt, font dt {
+background: #E0E0D0 !important;
+}
+
+
+/* --- Other text elements w/ id or class --- */
+
+p[id]:before {
+content: "p#" attr(id);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+p[class]:before {
+content: "p." attr(class);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+ul[id]:before {
+content: "ul#" attr(id);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+ul[class]:before {
+content: "ul." attr(class);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+ol[id]:before {
+content: "ol#" attr(id);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+ol[class]:before {
+content: "ol." attr(class);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+a[id]:before {
+content: "a#" attr(id);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+a[class]:before {
+content: "a." attr(class);
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+
+/* --- Hyperlinks --- */
+
+/* Hyperlinks with titles are minty green (accessibility and usability aid; 
+avoids exposing users to urls (directory structures and filenames - "tech-speak") */
+
+a[title] {
+color: #390 !important;
+background: #EEFFEE !important;
+}
+
+
+/* --- img alt text and dimensions: different methods of high/lowlighting --- */
+
+/* Highlight images (red) without alt-text or dimensions */
+img {border: 2px solid #F00 !important; 
+visibility: visible !important;}
+
+/* Highlight images (amber) without alt-text */
+img[height][width] {border: 2px solid #F90 !important; 
+visibility: visible !important;}
+
+/* Lowlight images with alt-text and dimensions */
+img[alt][height][width] {border-width: 0 !important; 
+visibility: visible !important;}
+
+
+/* --- New windows --- */
+
+/* New window warning (usability issue) */
+
+a[target="_blank"]:before {
+content: "Opens new window:";
+border: 1px solid #C00;
+padding: 1px;
+color: #000;
+background: #FF9;
+font: 9px Verdana, sans-serif;
+}
+
+
+/* --- Metrics --- */
+
+/* Not Gecko */
+
+font {counter-increment: fontNo;}
+table {counter-increment: tableNo;}
+table table {counter-increment: tablenestNo;}
+
+html:after {
+clear: both;
+border: 1px solid #C00;
+padding: 3px;
+color: #000;
+background: #FF9;
+content: "Page contains " counter(fontNo) " font elements; also " counter(tableNo) " tables of which " counter(tablenestNo) " are nested (table counts unreliable in Opera 5, 6)";
+font: 0.7em Verdana, sans-serif;
+line-height: 2; /* O7 likes this */
+}
+
+
+/* --- Print medium -specific --- */
+
+/* Pagination */
+@media print {
+	h1, h2, h3, h4, h5, h6 {
+	page-break-after: avoid; page-break-inside: avoid;
+	}
+	ul, ol, dl {
+	page-break-before: avoid;
+	}
+}
+
+/* Reverse print-suppressed items (examples only - may not be comprehensive) */
+.noprint, .source, .hide, .smart {
+display: block !important; 
+}
+
+.invisible {
+visibility: visible !important; 
+}
+
