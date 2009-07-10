@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+
+<title>Testing</title>
+<link rel="stylesheet" href="demo-diagnostic-css-ie7_files/style-show-tr.css" type="text/css" media="all">
+<style type="text/css" media="all">
+table#imgtest th,
+  table#imgtest td {text-align: center; padding: 5px;}
+table#imgtest tbody th {text-align: right;}
+table#imgtest img {width: 25px; height: 25px;}
+
+div:empty, span:empty,
+li:empty, p:empty,
+td:empty, th:empty {padding: 0.5em; background: yellow;}
+
+*[style], img, a[href],
+  font, center {border: 5px solid red;}
+*[class=""], *[id=""] {border: 5px dotted red;}
+table, th {border: 5px solid red;}
+
+img {border: 5px solid red;}
+img[alt][title] {border-width: 0;}
+img[alt] {border-color: fuchsia;}
+img[alt], img[title] {border-style: double;}
+img[alt=""][title],
+img[alt][title=""] {border-width: 3px;}
+img[alt=""][title=""] {border-style: dotted;}
+
+table[summary],
+  th[scope="col"],
+  th[scope="row"] {border: 1px solid #AAA;}
+
+a[title] {border-width: 0;}
+a[title=""] {border-width: 3px;}
+a[href="#"] {background: lime;}
+a[href=""] {background: fuchsia;}
+
+li {margin: 0.67em 0;}
+</style>
+</head><body>
+
+
+<h2>Empties</h2>
+<ol>
+<li>empty line item, comment-only line item, and space-only line item follow:</li>
+<li></li>
+<li><!-- comment --></li>
+<li> </li>
+<li>empty span [ <span></span> ], and a break [ <br> ]</li>
+<li>empty div follows: [<div></div>]</li>
+<li>see also first cell of following table</li>
+</ol>
+
+
+<h2>Images</h2>
+
+<table summary="Testing image attribute based diagnostic styling" id="imgtest">
+<thead>
+<tr>
+<th></th>
+<th scope="col">no alt</th>
+<th scope="col">empty alt</th>
+<th scope="col">filled alt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">no title</th>
+<td><img src="demo-diagnostic-css-ie7_files/comic.gif"></td>
+<td><img src="demo-diagnostic-css-ie7_files/comic.gif" alt=""></td>
+<td><img src="demo-diagnostic-css-ie7_files/comic.gif" alt="blah"></td>
+</tr>
+<tr>
+<th scope="row">empty title</th>
+<td><img src="demo-diagnostic-css-ie7_files/comic.gif" title=""></td>
+<td><img src="demo-diagnostic-css-ie7_files/comic.gif" title="" alt=""></td>
+<td><img src="demo-diagnostic-css-ie7_files/comic.gif" title="" alt="blah"></td>
+</tr>
+<tr>
+<th scope="row">filled title</th>
+<td><img src="demo-diagnostic-css-ie7_files/comic.gif" title="blah"></td>
+<td><img src="demo-diagnostic-css-ie7_files/comic.gif" title="blah" alt=""></td>
+<td><img src="demo-diagnostic-css-ie7_files/comic.gif" title="blah" alt="blah"></td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Tables</h2>
+
+<table>
+<tbody><tr>
+<th>A</th>
+<th>B</th>
+</tr>
+<tr>
+<th>C</th>
+<td>1</td>
+</tr>
+</tbody></table>
+
+<table summary="">
+<tbody><tr>
+<th scope="">A</th>
+<th scope="">B</th>
+</tr>
+<tr>
+<th scope="diag">C</th>
+<td>1</td>
+</tr>
+</tbody></table>
+
+<table summary="">
+<tbody><tr>
+<th scope="col">A</th>
+<th scope="col">B</th>
+</tr>
+<tr>
+<th scope="row">C</th>
+<td>1</td>
+</tr>
+</tbody></table>
+
+
+<h2>Links</h2>
+
+<ol>
+<li><a href="http://meyerweb.com/eric/tools/css/diagnostics/none">fillblah</a> (no title, filled href)</li>
+<li><a href="http://meyerweb.com/eric/tools/css/diagnostics/none" title="">fillblah</a> (empty title, filled href)</li>
+<li><a href="http://meyerweb.com/eric/tools/css/diagnostics/none" title="blah">fillblah</a> (filled title, filled href)</li>
+<li><a href="#">blah#</a> (no title, '#' href)</li>
+<li><a href="#" title="">blah#</a> (empty title, '#' href)</li>
+<li><a href="#" title="blah">blah#</a> (filled title, '#' href)</li>
+<li><a href="">blah</a> (no title, blank href)</li>
+<li><a href="" title="">blah</a> (empty title, blank href)</li>
+<li><a href="" title="blah">blah</a> (filled title, blank href)</li>
+</ol>
+
+</body></html>

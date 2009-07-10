@@ -1,4 +1,5 @@
-
+body { text-align: center;}
+.pagew, .pagePad, .contentPad { text-align: left;}
 
 /**
  * (en) Debugging: When you see a green background, IE is getting this stylesheet
@@ -52,3 +53,177 @@ html { height: auto; margin-bottom:0; }
 
 textarea { overflow:scroll; overflow-x: hidden; }
 input { overflow: hidden; }
+
+
+
+/*------------------------------------------------------------------------------------------------------*/
+
+/**
+ * (en) Preventing several css bugs by forcing "hasLayout"
+ * (de) Vermeidung verschiedenster Bugs durch Erzwingen von "hasLayout"
+ *
+ * @workaround
+ * @affected   IE 5.x/Win, IE6, IE7
+ * @css-for    IE 5.x/Win, IE6, IE7
+ * @valid      no
+ */
+
+/* IE6 & IE7 */
+#page, 
+#header,
+#sectHeader,
+#nav, 
+#content, 
+#footer,
+.pageW,
+.pagePad,
+.contentPad,
+.mod,
+.hd,
+.bd,
+.ft,
+.mediaBlockLt,
+.mediaBlockRt,
+.mediaBlockLt .text,
+.mediaBlockRt .text,
+.unit,
+.row,
+.line,
+.cols,
+.bar,
+.tiles
+.toolbar,
+.btnBar,
+.hList,
+.blockList,
+.hasLayout {
+	zoom: 1;
+}
+
+
+
+/**
+ * Disappearing List-Background Bug
+ * @see        http://www.positioniseverything.net/explorer/ie-listbug.html
+ *
+ * @bugfix
+ * @affected   IE 5.x/Win, IE6
+ * @css-for    IE 5.x/Win, IE6
+ * @valid      yes
+ */
+
+ul, ol, dl { position: relative; }
+
+/**
+ * List-Numbering Bug
+http://www.quirksmode.org/bugreports/archives/2005/07/IE_60_does_not_render_ordered_list_correctly.html 
+ *
+ * @bugfix
+ * @affected   IE 5.x/Win, IE6, IE7
+ * @css-for    IE 5.x/Win, IE6, IE7
+ * @valid      yes
+ */
+/* When styling an li in an ol with width or height in IE it numbers all LIs 1, unless this fix is applied */
+body ol li { display:list-item; }
+
+
+
+
+/**
+ * Forms Fieldset/Legend-Bug in IE
+ * @see http://www.mattheerema.com/web-design/2006/04/getting-fieldset-backgrounds-and-legends-to-behave-in-ie/
+ *
+ * @workaround
+ * @affected IE 5.x/Win, IE6, IE7
+ * @css-for IE 5.x/Win, IE6, IE7
+ * @valid yes
+ */
+ 
+ legend { position:absolute; top: -.5em; left: .5em; }
+ fieldset { position:relative; overflow:visible; height: 1%; margin-top:1.5em; padding-top:1.5em; }
+
+
+/**
+ * IE/Win Guillotine Bug
+ * @see        http://www.positioniseverything.net/explorer/guillotine.html
+ *
+ * @workaround
+ * @affected   IE 5.x/Win, IE6
+ * @css-for    IE 5.x/Win, IE6
+ * @valid      yes
+ */
+
+body a, body a:hover { background-color: transparent; }
+
+
+/* Proportion grid */	
+.lastUnit {
+	overflow: visible;
+	position: relative;
+	left: -3px; /* Pulls lastUnit to the left to compensate for 3px text jog */
+	margin-right: -3px; /* Prevents lastUnit from acting oversized (3px text jog normally adds 3px to width) */
+}
+
+/* Just in case, to thwart the double float margin bug */
+.unit,
+.lastUnit {
+	display: inline;
+}
+
+
+/*
+http://www.positioniseverything.net/articles/onetruelayout/equalheight
+http://www.chilipepperdesign.com/2009/05/03/css-equal-height-columns-with-bottom-border-and-margin
+*/
+.equalize,
+.tiles {
+	width: auto;
+}
+.equalize .unit,
+.tiles .unit {
+	padding-bottom: 32767px;
+	margin-bottom: -32767px;
+	width: auto;
+}
+.equalize .unit .unit,
+.tiles .unit .unit {
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+.row>.size1of2{width:50%;}
+.row>.size1of3{width:33.33333%;}
+.row>.size2of3{width:66.66666%;}
+.row>.size1of4{width:25%;}
+.row>.size3of4{width:75%;}
+.row>.size1of5{width:20%;}
+.row>.size2of5{width:40%;}
+.row>.size3of5{width:60%;}
+.row>.size4of5{width:80%;}
+.row>.size1of6{width:16.6666%;}
+.row>.size5of6{width:83.3333%;}
+.row>.size1of7{width: 14.286%;}
+.row>.size2of7{width: 28.57%;}
+.row>.size3of7{width: 42.857%;}
+.row>.size4of7{width: 57.143%;}
+.row>.size5of7{width: 71.43%;}
+.row>.size6of7{width: 85.71%;}
+.row>.sizelof8{width:12.5%;}
+.row>.size3of8{width:37.5%;}
+.row>.size5of8{width:62.5%;}
+.row>.size7of8{width:87.5%;}
+.row>.size1of9{width:11.1111%;}
+.row>.size4of9{width:44.4444%;}
+.row>.size5of9{width:55.5555%;}
+.row>.size7of9{width:77.7777%;}
+.row>.size8of9{width:88.8888%;}
+.row>.size1of10{width:10%;}
+.row>.size3of10{width:30%;}
+.row>.size7of10{width:70%;}
+.row>.size9of10{width:90%;}
+.row>.size1of12{width:8.3333%;}
+.row>.size5of12{width:41.6666%;}
+.row>.size7of12{width:58.3333%}
+.row>.size11of12{width:91.6666%;}
+
+
