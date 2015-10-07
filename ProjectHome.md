@@ -1,0 +1,1 @@
+RPCSS (Rapid Prototyping CSS) is basically a hodge-podge of some of the highest quality CSS and Javascript solutions and open-source code pieced to together to work as a harmonious web front-ed development framework. Inspiration is taken from many sources, soon to be documented.
